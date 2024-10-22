@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package project1;
+
+import java.util.Scanner;
+
+public class tugas {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean lagi = true; // Inisialisasi variabel lagi
+
+        do {
+            System.out.print("Masukkan jumlah kekayaan (dalam Rupiah): ");
+            while (!input.hasNextDouble()) {
+                System.out.println("Input tidak valid. Silakan masukkan angka.");
+                input.next(); // Clear invalid input
+            }
+            
+            double totalKekayaan = input.nextDouble();
+            if (totalKekayaan < 0) {
+                System.out.println("Jumlah kekayaan tidak bisa negatif.");
+                continue; // Kembali ke awal perulangan
+            }
+
+            double jumlahZakat = totalKekayaan * 2.5 / 100;
+            System.out.printf("Jumlah zakat yang harus dibayarkan: Rp %.2f%n", jumlahZakat);
+
+            // Menanyakan kepada pengguna apakah ingin menghitung lagi
+            System.out.print("Apakah Anda ingin menghitung lagi? (ya/tidak): ");
+            String jawaban = input.next();
+            lagi = jawaban.equalsIgnoreCase("ya");
+            
+        } while (lagi);
+
+        System.out.println("Terima kasih telah menggunakan program ini.");
+    }
+}
